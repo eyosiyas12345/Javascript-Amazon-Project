@@ -51,7 +51,11 @@ productHTML+=`    <div class="product-container">
         </div>`
       }
   )
+
+  //Add the generated html to the web page.
 document.querySelector('.products-grid').innerHTML=productHTML;
+
+//Add interactivity to each Add to cart button.
 document.querySelectorAll('.js-add-to-cart-button').forEach((button)=>{
   button.addEventListener('click',()=>{
    const productId = button.dataset.productId;
@@ -72,7 +76,16 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button)=>{
               quantity:1
               })
       }
-      console.log(cart);
+
+      //Add interactivity to the cart-icon and cart-quantity.
+let cartQuantity=0;
+
+cart.forEach((item)=>{
+cartQuantity+=item.quantity;
+})
+document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
       }
   )
 })
+
+

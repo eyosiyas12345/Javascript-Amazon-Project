@@ -8,7 +8,7 @@ quantity: 2
 quantity: 1
 }
 ];
-}
+
 
 export function addToCart(productId){
     let matchItem;

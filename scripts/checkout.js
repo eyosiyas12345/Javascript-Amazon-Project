@@ -1,6 +1,11 @@
 import {cart,removeFromCart} from '../data/cart.js'
 import {products} from '../data/products.js';
 import {currencyFormat} from './utils/money.js'
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
+ 
+const today = dayjs();
+const deliveryDate=today.add(2,'days');
+console.log(deliveryDate);
 
 let cartElementsHTML='';
 
@@ -39,7 +44,7 @@ if(product.id===productId){
           <span>
             Quantity: <span class="quantity-label">${cartItem.quantity}</span>
           </span>
-          <span class="update-quantity-link link-primary">
+          <span class="update-quantity-link link-primary js-update-quantity-link data-product-id="${matchingItem.id}">
             Update
           </span>
           <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingItem.id}">
@@ -120,4 +125,11 @@ cart.forEach((product)=>{
 total > 1 ? document.querySelector('.js-cart-items-quantity').innerHTML=total + " items": document.querySelector('.js-cart-items-quantity').innerHTML=total + " item";
 return total;
 }
-console.log(cart)
+
+
+document.querySelectorAll('.js-update-quantity-link').forEach((link)=>{link.addEventListener('click',()=>{
+  //generate input html element 
+  const productId= link.dataset.productId;
+  console.log(productId);
+});
+});

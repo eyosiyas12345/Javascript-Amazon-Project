@@ -1,4 +1,4 @@
-export let cart = JSON.parse(localStorage.getItem('cart')) 
+export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if(!cart){
   cart = [
@@ -12,7 +12,6 @@ quantity: 1
 }
 ];
 }
-
 
 export function addToCart(productId){
     let matchItem;
@@ -33,8 +32,7 @@ export function addToCart(productId){
           })
   }
   console.log(cart);
-
-  saveToStorage();
+saveToStorage();
   }
 
  export function removeFromCart(productId){
@@ -47,11 +45,9 @@ if(cartItem.productId!==productId){
   });
   cart=newCart;
   console.log(cart);
-  
-  saveToStorage();
+saveToStorage();
    }
-
+   
 export function saveToStorage(){
-  localStorage.setItem('cart',JSON.stringify(cart))
-  
+  localStorage.setItem('cart',JSON.stringify(cart));
 }

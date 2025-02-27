@@ -1,4 +1,3 @@
-
 import {cart,removeFromCart} from '../data/cart.js'
 import {products} from '../data/products.js';
 import {currencyFormat} from './utils/money.js'
@@ -106,7 +105,19 @@ if(product.id===productId){
         const productId=link.dataset.productId;
         removeFromCart(productId);
         renderCart();
+        displayCartItemsQuantity();
   });
   });
-}
+  }
 renderCart();
+displayCartItemsQuantity();
+
+export function displayCartItemsQuantity(){
+  let total=0;
+cart.forEach((product)=>{
+  total+=product.quantity
+})
+total > 1 ? document.querySelector('.js-cart-items-quantity').innerHTML=total + " items": document.querySelector('.js-cart-items-quantity').innerHTML=total + " item";
+return total;
+}
+console.log(cart)
